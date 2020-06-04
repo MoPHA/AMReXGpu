@@ -1,0 +1,7 @@
+n_cell = 4 4 4
+max_grid_size = 4 4 4
+ppc = 25
+m = 1
+q = 1
+v = 0.1
+

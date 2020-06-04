@@ -16,8 +16,7 @@
 #include <AMReX_Particle.H>
 #include <AMReX_Utility.H>
 #include <AMReX_ParticleUtil.H>
-#include <AMReX_NeighborParticles.H>
-#include "AMReX_Array4.H"
+#include <AMReX_Array4.H>
 
 
 #include "const_defs.hpp"
@@ -53,9 +52,9 @@ void main_main()
     pp.get("n_cell",n_cell);
     pp.get("max_grid_size",max_grid_size);
     pp.get("ppc",ppc);
-    pp.get(" m",m);
-    pp.get(" q",q);
-    pp.get(" v",v);
+    pp.get("m",m);
+    pp.get("q",q);
+    pp.get("v",v);
 
     // Periodicity 
     amrex::Vector<int> is_periodic({1,1,1});
@@ -78,6 +77,6 @@ void main_main()
     CParticleContainer P(geom,dm,ba);
     add_particle_density(geom,P,uniform_density,ppc,v);    
 
-    amrex::Print() << P.TotalNumberOfParticles();
+    amrex::Print() << "Total number of particles: " << P.TotalNumberOfParticles() << std::endl;
 
 }
