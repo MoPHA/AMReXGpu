@@ -14,6 +14,7 @@ LFLAGS := -L$(LIBDIR) $(COMPILE_LIB_FLAGS)
 
 all:
 	nvcc  pp_main.cpp -c  $(CFLAGS) 
+	nvcc  pushers.cpp -c  $(CFLAGS) 
 	nvcc  particle_utils.cpp -c $(CFLAGS) 
 link:
-	nvcc pp_main.o particle_utils.o -o main $(LFLAGS) 
+	nvcc pp_main.o pushers.o particle_utils.o -o main $(LFLAGS) 

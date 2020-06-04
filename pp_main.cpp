@@ -21,6 +21,7 @@
 
 #include "const_defs.hpp"
 #include "particle_utils.hpp"
+#include "pushers.hpp"
 
 void main_main();
 
@@ -32,6 +33,10 @@ int main(int argc, char* argv[])
     amrex::Finalize();
 
 }
+
+
+
+
 void main_main()
 {
     amrex::ParmParse pp; 
@@ -42,12 +47,14 @@ void main_main()
     
     // Particle per cell
     int ppc;
+    int steps;
     // Particle mass and charge
     // Each Particle container only contains indentical particles
     // This test case only has one type of particles
     amrex::Real m;
     amrex::Real q;
     amrex::Real v;
+    double dt;
 
     pp.get("n_cell",n_cell);
     pp.get("max_grid_size",max_grid_size);
@@ -55,6 +62,8 @@ void main_main()
     pp.get("m",m);
     pp.get("q",q);
     pp.get("v",v);
+    pp.get("dt",dt);
+    pp.get("steps",steps);
 
     // Periodicity 
     amrex::Vector<int> is_periodic({1,1,1});
@@ -78,5 +87,11 @@ void main_main()
     add_particle_density(geom,P,uniform_density,ppc,v);    
 
     amrex::Print() << "Total number of particles: " << P.TotalNumberOfParticles() << std::endl;
+
+    for(int i=0;i< steps;i++){
+    push_particle_position(geom,P,dt);
+    }
+
+
 
 }
