@@ -89,6 +89,7 @@ void main_main()
     amrex::Print() << "Total number of particles: " << P.TotalNumberOfParticles() << std::endl;
 
     for(int i=0;i< steps;i++){
+    amrex::Print() << "Step: " << i << std::endl;
     push_particle_position(geom,P,dt);
     }
 
