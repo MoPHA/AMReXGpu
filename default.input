@@ -1,8 +1,8 @@
 n_cell = 4 4 4
 max_grid_size = 4 4 4
 
-ppc = 25
-steps=10
+ppc = 80000
+steps=100000
 dt=0.5
 
 m = 1
