@@ -98,7 +98,10 @@ std::pair<amrex::Real,amrex::Real> get_total_energy(const amrex::Geometry geom,C
         amrex::ParallelFor( np,[=] AMREX_GPU_DEVICE (long i)
         {
             amrex::Real tmp =particles[i].rdata(M)*0.5*
-                    ( particles[i].rdata(VX)*particles[i].rdata(VX)+particles[i].rdata(VY)*particles[i].rdata(VY)+particles[i].rdata(VZ)*particles[i].rdata(VZ) );
+                    ( particles[i].rdata(VX)*particles[i].rdata(VX)+
+                      particles[i].rdata(VY)*particles[i].rdata(VY)+
+                      particles[i].rdata(VZ)*particles[i].rdata(VZ) 
+                     );
             amrex::Gpu::Atomic::Add(EkinPtr + (i%20), tmp);
         });
     }
