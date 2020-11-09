@@ -89,8 +89,9 @@ for (CParIter pti(P, 0); pti.isValid(); ++pti) {
 ```
 ### Reduction
 ```c++
-std::pair<amrex::Real,amrex::Real> get_total_energy(const amrex::Geometry geom,CParticleContainer&P, amrex::MultiFab &E, amrex::MultiFab &B ){
-    // kinetic energy is computed on gpu with atomic adds on a vector of size 20
+std::pair<amrex::Real,amrex::Real> get_total_energy(const amrex::Geometry geom,CParticleContainer&P,
+                                                    amrex::MultiFab &E, amrex::MultiFab &B ){
+    
     amrex::Gpu::DeviceVector<amrex::Real> EkinVect(20, 0.); 
     amrex::Real* EkinPtr = EkinVect.dataPtr();
 
