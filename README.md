@@ -1,17 +1,19 @@
 # Examples of very basic AMReX GPU functionality 
 
 **Note** features are demonstrated in the GPU implementation of the [strugepic library](https://github.com/MoPHA/strugepic)
-Below are very smal example code snippets for the most common operation, see strugepic for more context. 
+
+Below are very small example code snippets for the most common operation, see strugepic for more context. 
 
 
 ## Code snippets
 
 Following typdefs are used 
 ```
-typedef amrex::ParIter< C_NUM_REALS  ,C_NUM_INTS,C_NUM_SOA_REALS,C_NUM_SOA_INTS> CParIter;
-typedef amrex::ParticleContainer<C_NUM_REALS,C_NUM_INTS,C_NUM_SOA_INTS,C_NUM_SOA_REALS> CParticleContainer;
-typedef amrex::Particle<C_NUM_REALS,C_NUM_INTS> CParticle;
-typedef amrex::ArrayOfStructs<C_NUM_REALS,C_NUM_INTS> CParticles;
+typedef amrex::ParIter< N_REALS  ,N_INTS,N_SOA_REALS,N_SOA_INTS> CParIter;                 
+typedef amrex::ParticleContainer<N_REALS,N_INTS,N_SOA_INTS,N_SOA_REALS> CParticleContainer;
+typedef amrex::Particle<N_REALS,N_INTS> CParticle;                                         
+typedef amrex::ArrayOfStructs<N_REALS,N_INTS> CParticles;                                  
+
 ```
 Fields and particles 
 ```
