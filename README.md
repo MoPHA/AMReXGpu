@@ -2,7 +2,6 @@
 
 **Note** features are demonstrated in the GPU implementation of the [strugepic library](https://github.com/MoPHA/strugepic)
 Below are very smal example code snippets for the most common operation, see strugepic for more context. 
-[toc]
 
 
 ## Code snippets
