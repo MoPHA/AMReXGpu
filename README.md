@@ -1,7 +1,11 @@
 # Examples of very basic AMReX GPU functionality 
 
 **Note** features are demonstrated in the GPU implementation of the [strugepic library](https://github.com/MoPHA/strugepic)
+Below are very smal example code snippets for the most common operation, see strugepic for more context. 
+[toc]
 
+
+## Code snippets
 
 Following typdefs are used 
 ```
@@ -18,8 +22,7 @@ amrex::MultiFab B(ba,dm,Ncomp,Nghost);
 ```
 
 
-## In order of implementation and difficulty)
-- Particle to Particle
+### Particle to Particle
 ```c++
     for (CParIter pti(P, 0); pti.isValid(); ++pti) {
         CParticle *  AMREX_RESTRICT particles= &(pti.GetArrayOfStructs()[0]);
@@ -34,7 +37,7 @@ amrex::MultiFab B(ba,dm,Ncomp,Nghost);
         }
         
 ```
-- Grid to Grid
+### Grid to Grid
 ```c++
  for (amrex::MFIter mfi(E); mfi.isValid(); ++mfi){
         const amrex::Box& box = mfi.validbox();
@@ -48,7 +51,7 @@ amrex::MultiFab B(ba,dm,Ncomp,Nghost);
         });
 ```
 
-- Grid to Particle
+### Grid to Particle
 ```c++
   for (CParIter pti(P, 0); pti.isValid(); ++pti) {
         auto box=E.box(pti.index());
@@ -66,7 +69,7 @@ amrex::MultiFab B(ba,dm,Ncomp,Nghost);
         });
         
 ```
-- Particle to grid
+### Particle to grid
 ```c++
 for (CParIter pti(P, 0); pti.isValid(); ++pti) {
         auto box=E.box(pti.index());
@@ -83,7 +86,7 @@ for (CParIter pti(P, 0); pti.isValid(); ++pti) {
         ...
         });
 ```
-- Reduction
+### Reduction
 ```c++
 std::pair<amrex::Real,amrex::Real> get_total_energy(const amrex::Geometry geom,CParticleContainer&P, amrex::MultiFab &E, amrex::MultiFab &B ){
     // kinetic energy is computed on gpu with atomic adds on a vector of size 20
